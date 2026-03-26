@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.AddForce(new Vector2(_moveHor, _moveVert) * _speed * Time.deltaTime, ForceMode2D.Impulse);   
+        _rb.velocity = new Vector2(_moveHor, _moveVert) * _speed * Time.deltaTime;   
 
         // Flashlight handling
         Vector3 worldPos = cam.ScreenToWorldPoint(_mouse_pos);
