@@ -21,8 +21,8 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        _moveHor = Input.GetAxis("Horizontal");
-        _moveVert = Input.GetAxis("Vertical");
+        _moveHor = Input.GetAxisRaw("Horizontal");
+        _moveVert = Input.GetAxisRaw("Vertical");
         _mouse_pos = Input.mousePosition;
 
         if (Input.GetMouseButtonUp(0)) //toggle flashlight
