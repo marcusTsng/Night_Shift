@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
-// Adding ", IInteractable" signs the contract
 public class Door : MonoBehaviour, IInteractable 
 {
-    // Because we signed the contract, we MUST include this specific function
+    public bool enabled {get; set;} = true;
+    public string prompt {get; set;} = "E to open door";
+    private BoxCollider2D _collider;
+
+    void Start()
+    {
+        _collider = GetComponent<BoxCollider2D>();
+
+        _collider.isTrigger = false;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Interact();
+        }
+    }
+
     public void Interact()
     {
-        Debug.Log("test");
-        
-        // Later, you can put specific code here!
-        // e.g., "If book is on floor, move book to shelf."
+        _collider.isTrigger = !_collider.isTrigger;
+        if (_collider.isTrigger) // Opens the door
+        {
+            prompt = "E to close door";
+        }
+        else // Closes the door
+        {
+            prompt = "E to open door";
+        }
     }
 }

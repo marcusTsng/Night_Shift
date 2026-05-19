@@ -2,6 +2,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    // Any script that implements this interface MUST have this function
+    bool enabled { get;  set;}
+
+    string prompt { get; set;}
     void Interact();
 }
